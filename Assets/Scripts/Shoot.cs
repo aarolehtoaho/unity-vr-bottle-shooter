@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using TMPro;
 
 public class Shoot : MonoBehaviour
 {
+    public TMP_Text ScoreText;
     public bool LeftHandTriggerPressed;
     public bool RightHandTriggerPressed;
 
@@ -25,6 +27,7 @@ public class Shoot : MonoBehaviour
             if (canShoot)
             {
                 ShootBullet();
+                DecreaseScore();
                 lastShotTime = Time.time;
             }
         }
@@ -60,5 +63,13 @@ public class Shoot : MonoBehaviour
     {
         GameObject bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
         bullet.SetActive(true);
+    }
+
+    private void DecreaseScore()
+    {
+        int currentScore = int.Parse(ScoreText.text);
+        currentScore--;
+        currentScore = Mathf.Max(currentScore, 0);
+        ScoreText.text = currentScore.ToString();
     }
 }

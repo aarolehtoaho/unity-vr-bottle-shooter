@@ -1,7 +1,9 @@
 using UnityEngine;
+using TMPro;
 
 public class BottleHandler : MonoBehaviour
 {
+    public TMP_Text ScoreText;
     public bool BottleHit = false;
 
     private GameObject[] bottles;
@@ -52,6 +54,8 @@ public class BottleHandler : MonoBehaviour
 
     private void IncreaseScore()
     {
-        // TODO
+        int currentScore = int.Parse(ScoreText.text);
+        currentScore += 5;
+        ScoreText.text = currentScore.ToString();
     }
 }
