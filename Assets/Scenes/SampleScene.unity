@@ -3894,7 +3894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471980, guid: 2c6d0a3f4ae84574a9be4efad5a4bde3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 471980, guid: 2c6d0a3f4ae84574a9be4efad5a4bde3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3925,14 +3925,38 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5455060, guid: 2c6d0a3f4ae84574a9be4efad5a4bde3, type: 3}
+      propertyPath: m_Mass
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455060, guid: 2c6d0a3f4ae84574a9be4efad5a4bde3, type: 3}
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 153524, guid: 2c6d0a3f4ae84574a9be4efad5a4bde3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1367587992}
   m_SourcePrefab: {fileID: 100100000, guid: 2c6d0a3f4ae84574a9be4efad5a4bde3, type: 3}
+--- !u!1 &1367587986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 153524, guid: 2c6d0a3f4ae84574a9be4efad5a4bde3, type: 3}
+  m_PrefabInstance: {fileID: 1359241585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1367587992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367587986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1849b605c11a8a041a62dec64290a396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tumbleweed
 --- !u!1 &1385289381
 GameObject:
   m_ObjectHideFlags: 0
