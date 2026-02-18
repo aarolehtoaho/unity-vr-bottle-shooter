@@ -5,8 +5,12 @@ public class BottleHandler : MonoBehaviour
 {
     public TMP_Text ScoreText;
     public bool BottleHit = false;
+    public Vector3 HitDirection = Vector3.zero;
 
     private GameObject[] bottles;
+    private GameObject brokenBottle;
+    private Vector3 brokenBottlePositionOffset = new Vector3(0, 0.5f, 0);
+    private Quaternion brokenBottleRotation = Quaternion.Euler(90, 0, 0);
     private int currentBottleIndex = -1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +21,7 @@ public class BottleHandler : MonoBehaviour
             bottles[i] = transform.Find("Bottle" + (i + 1)).gameObject;
             bottles[i].SetActive(false);
         }
+        brokenBottle = transform.Find("BrokenBottle").gameObject;
 
         ActivateBottle(GetRandomBottleIndex());
     }
@@ -27,6 +32,7 @@ public class BottleHandler : MonoBehaviour
         if (BottleHit)
         {
             IncreaseScore();
+            SpawnBrokenBottle();
             BottleHit = false;
 
             int randomIndex = GetRandomBottleIndex();
@@ -57,5 +63,16 @@ public class BottleHandler : MonoBehaviour
         int currentScore = int.Parse(ScoreText.text);
         currentScore += 5;
         ScoreText.text = currentScore.ToString();
+    }
+
+    private void SpawnBrokenBottle()
+    {
+        GameObject brokenBottleInstance = Instantiate(brokenBottle, bottles[currentBottleIndex].transform.position + brokenBottlePositionOffset, brokenBottleRotation);
+        brokenBottleInstance.SetActive(true);
+
+        Rigidbody rb = brokenBottleInstance.GetComponent<Rigidbody>();
+        rb?.AddForce(HitDirection * 5f, ForceMode.Impulse);
+
+        Destroy(brokenBottleInstance, 2f);
     }
 }

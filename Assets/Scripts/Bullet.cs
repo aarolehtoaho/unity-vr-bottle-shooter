@@ -34,7 +34,9 @@ public class Bullet : MonoBehaviour
         if (isBottle)
         {
             other.gameObject.SetActive(false);
-            other.gameObject.transform.parent.GetComponent<BottleHandler>().BottleHit = true;
+            BottleHandler bottleHandler = other.gameObject.transform.parent.GetComponent<BottleHandler>();
+            bottleHandler.BottleHit = true;
+            bottleHandler.HitDirection = transform.up;
         }
         bool notPistol = !other.gameObject.CompareTag("Pistol");
         if (notPistol)
