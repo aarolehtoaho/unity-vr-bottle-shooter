@@ -42,6 +42,11 @@ public class Bullet : MonoBehaviour
         if (notPistol)
         {
             Destroy(gameObject);
+            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+            bool hasPhysics = rb != null;
+            if (hasPhysics)            {
+                rb.AddForce(transform.up, ForceMode.Impulse);
+            }
         }
     }
 }
