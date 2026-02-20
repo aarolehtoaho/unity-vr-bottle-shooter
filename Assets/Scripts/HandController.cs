@@ -8,8 +8,8 @@ public class HandController : MonoBehaviour
     public InputActionReference gripAction;
     public InputActionReference triggerAction;
     public Hand hand;
-    public GameObject pistol;
-    
+
+    private GameObject[] pistols;
     private IXRSelectInteractor interactor;
     private bool isLeftHand;
 
@@ -19,6 +19,7 @@ public class HandController : MonoBehaviour
         hand ??= GetComponent<Hand>();
         interactor = GetComponentInChildren<IXRSelectInteractor>();
         isLeftHand = gameObject.name.ToLower().Contains("left");
+        pistols = GameObject.FindGameObjectsWithTag("Pistol");
     }
 
     void OnEnable()
@@ -62,7 +63,7 @@ public class HandController : MonoBehaviour
 
     private void SetGunTrigger(bool pressed)
     {
-        if (pistol != null)
+        foreach (GameObject pistol in pistols)
         {
             if (isLeftHand)
             {
