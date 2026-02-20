@@ -7,15 +7,18 @@ public class Shoot : MonoBehaviour
     public TMP_Text ScoreText;
     public bool LeftHandTriggerPressed;
     public bool RightHandTriggerPressed;
+    public float shootCooldown = 0.5f;
+    public AudioClip shootSound;
 
     private GameObject BulletPrefab;
     private float lastShotTime = 0f;
-    public float shootCooldown = 0.5f;
+    private AudioSource shootAudioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         BulletPrefab = transform.Find("Bullet").gameObject;
+        shootAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -63,6 +66,11 @@ public class Shoot : MonoBehaviour
     {
         GameObject bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
         bullet.SetActive(true);
+
+        if (shootAudioSource != null && shootSound != null)
+        {
+            shootAudioSource.PlayOneShot(shootSound);
+        }
     }
 
     private void DecreaseScore()

@@ -6,6 +6,7 @@ public class BottleHandler : MonoBehaviour
     public TMP_Text ScoreText;
     public bool BottleHit = false;
     public Vector3 HitDirection = Vector3.zero;
+    public AudioClip hitSound;
 
     private GameObject[] bottles;
     private GameObject brokenBottle;
@@ -72,6 +73,12 @@ public class BottleHandler : MonoBehaviour
 
         Rigidbody rb = brokenBottleInstance.GetComponent<Rigidbody>();
         rb?.AddForce(HitDirection * 5f, ForceMode.Impulse);
+
+        AudioSource hitAudioSource = brokenBottleInstance.GetComponent<AudioSource>();
+        if (hitAudioSource != null && hitSound != null)
+        {
+            hitAudioSource.PlayOneShot(hitSound);
+        }
 
         Destroy(brokenBottleInstance, 2f);
     }
