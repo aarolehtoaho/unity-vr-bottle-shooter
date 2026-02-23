@@ -1023,6 +1023,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1373762092}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100004, guid: 3348730844142bb44afc1878594ad4aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 566477410}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 3348730844142bb44afc1878594ad4aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 73730585}
@@ -2887,6 +2890,26 @@ Transform:
   - {fileID: 1453332468}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &566477409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 3348730844142bb44afc1878594ad4aa, type: 3}
+  m_PrefabInstance: {fileID: 73730582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &566477410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566477409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3860f436a2d1574b8dd9d7926ae3573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gallow
+  CurrentState: 0
+  ScoreText: {fileID: 311902528}
+  InfoText: {fileID: 1476541711}
 --- !u!1001 &569085827
 PrefabInstance:
   m_ObjectHideFlags: 0
