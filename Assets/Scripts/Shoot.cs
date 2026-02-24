@@ -77,7 +77,7 @@ public class Shoot : MonoBehaviour
     {
         int currentScore = int.Parse(ScoreText.text);
         currentScore--;
-        currentScore = Mathf.Max(currentScore, 0);
+        currentScore = Mathf.Max(currentScore, -10);
         ScoreText.text = currentScore.ToString();
     }
 }

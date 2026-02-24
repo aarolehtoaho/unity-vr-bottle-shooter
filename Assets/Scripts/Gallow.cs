@@ -26,7 +26,7 @@ public class Gallow : MonoBehaviour
 
     void Update() {
         if (GameOver) return;
-        if (getCurrentScore() == 0)
+        if (getCurrentScore() == -10)
         {
             CurrentState = CharacterState.Dead;
             setCharacterState(CurrentState);

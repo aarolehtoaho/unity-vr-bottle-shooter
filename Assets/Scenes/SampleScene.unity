@@ -1807,7 +1807,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f71b94d5cae9c440b2cf92174ef02cd, type: 2}
   m_sharedMaterial: {fileID: -6967948370442251126, guid: 3f71b94d5cae9c440b2cf92174ef02cd, type: 2}
@@ -7249,8 +7249,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save your friend from hanging by reaching score of 100 in the Bottle Shooter.
-    Shooting a bottle gives 5 points. Each shot bullet reduces score by 1.
+  m_text: Save your friend from hanging by reaching 100 points in the Bottle Shooter.
+    Shooting a bottle gives you 5 points. Each shot reduces your score by 1. Your
+    friend dies if your score is -10.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f71b94d5cae9c440b2cf92174ef02cd, type: 2}
   m_sharedMaterial: {fileID: -6967948370442251126, guid: 3f71b94d5cae9c440b2cf92174ef02cd, type: 2}
@@ -7277,8 +7278,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 9
+  m_fontSizeBase: 9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
