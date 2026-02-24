@@ -41,10 +41,26 @@ public class Bullet : MonoBehaviour
         bool notPistol = !other.gameObject.CompareTag("Pistol");
         if (notPistol)
         {
+            bool isCharacter = other.gameObject.CompareTag("Character");
+            if (isCharacter)
+            {
+                Gallow gallow = GameObject.Find("The Gallows").GetComponent<Gallow>();
+                if (gallow.CurrentState == Gallow.CharacterState.Tied)
+                {
+                    gallow.SetCharacterState(Gallow.CharacterState.Hanged);
+                    gallow.SetPlankState(true);
+                } else if (gallow.CurrentState == Gallow.CharacterState.Alive)
+                {
+                    gallow.SetCharacterState(Gallow.CharacterState.Body);
+                    GameObject characterObject = gallow.GetCharacterObject();
+                    RagdollController ragdollController = characterObject.GetComponent<RagdollController>();
+                    ragdollController.SetRagdollState(true);
+                }
+            }
             Destroy(gameObject);
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
             bool hasPhysics = rb != null;
-            if (hasPhysics)            {
+            if (hasPhysics) {
                 rb.AddForce(transform.up, ForceMode.Impulse);
             }
         }

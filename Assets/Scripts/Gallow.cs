@@ -3,7 +3,7 @@ using TMPro;
 
 public class Gallow : MonoBehaviour
 {
-    public enum CharacterState { Tied, Dead, Alive }
+    public enum CharacterState { Tied, Hanged, Alive, Body }
     public CharacterState CurrentState = CharacterState.Tied;
     public TMP_Text ScoreText;
     public TMP_Text InfoText;
@@ -26,43 +26,58 @@ public class Gallow : MonoBehaviour
 
     void Update() {
         if (GameOver) return;
-        if (getCurrentScore() == -10)
+        if (GetCurrentScore() == -10 || CurrentState == CharacterState.Hanged)
         {
-            CurrentState = CharacterState.Dead;
-            setCharacterState(CurrentState);
-            setPlankState(true);
+            CurrentState = CharacterState.Hanged;
+            SetCharacterState(CurrentState);
+            SetPlankState(true);
             GameOver = true;
-            setInfoText("Game Over!", Color.red);
-        } else if (getCurrentScore() >= 100)
+            SetInfoText("Game Over!", Color.red);
+        } else if (GetCurrentScore() >= 100)
         {
             CurrentState = CharacterState.Alive;
-            setCharacterState(CurrentState);
-            setPlankState(false);
+            SetCharacterState(CurrentState);
+            SetPlankState(false);
             GameOver = true;
-            setInfoText("You Win!", Color.green);
+            SetInfoText("You Win!", Color.green);
         }
     }
 
-    void setPlankState(bool isOpen)
+    public void SetPlankState(bool isOpen)
     {
         PlankObjects[0].SetActive(!isOpen);
         PlankObjects[1].SetActive(isOpen);
     }
 
-    void setCharacterState(CharacterState state)
+    public void SetCharacterState(CharacterState state)
     {
+        CurrentState = state;
+        // Body and Alive uses the same GameObject
+        state = state == CharacterState.Body ? CharacterState.Alive : state;
         for (int i = 0; i < CharacterObjects.Length; i++)
         {
-            CharacterObjects[i].SetActive(i == (int)state);
+            if (i == (int)state)
+            {
+                CharacterObjects[i].SetActive(true);
+            } else
+            {
+                CharacterObjects[i].SetActive(false);
+            }
         }
     }
 
-    int getCurrentScore()
+    public GameObject GetCharacterObject()
+    {
+        CharacterState state = CurrentState == CharacterState.Body ? CharacterState.Alive : CurrentState;
+        return CharacterObjects[(int)state];
+    }
+
+    int GetCurrentScore()
     {
         return int.Parse(ScoreText.text);
     }
 
-    void setInfoText(string text, Color color)
+    void SetInfoText(string text, Color color)
     {
         InfoText.text = text;
         InfoText.color = color;

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bottle
   - Pistol
+  - Character
   layers:
   - Default
   - TransparentFX
